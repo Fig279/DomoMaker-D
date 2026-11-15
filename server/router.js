@@ -3,6 +3,8 @@ const mid = require('./middleware');
 
 // Maps each URL and HTTP method to its controller function.
 const router = (app) => {
+  app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
+
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
